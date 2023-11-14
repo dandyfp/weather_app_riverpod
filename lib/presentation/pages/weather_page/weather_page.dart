@@ -78,7 +78,7 @@ class WeatherPage extends ConsumerWidget {
                           horizontalSpace(8),
                           actionButton(
                             title: 'Hourly',
-                            onTap: () {},
+                            onTap: () => ref.read(routerProvider).pushNamed('hourly-forecast-page', extra: cityLocal),
                             icon: Icons.access_time,
                           ),
                         ],

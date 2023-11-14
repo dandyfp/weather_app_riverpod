@@ -4,7 +4,7 @@ const weatherGB = {
   'Scattered clouds': 'assets/images/scattered_clouds.jpg',
   'Broken clouds': 'assets/images/broken_clouds.jpeg',
   'Forecast clouds': 'assets/images/forecast_clouds.jpg',
-  'shower rain': 'assets/images/shower_rain.jpg',
+  'Shower rain': 'assets/images/shower_rain.jpg',
   'Rain': 'assets/images/rain.jpg',
   'Thunderstrom': 'assets/images/thunderstrom.jpg',
   'Snow': 'assets/images/snow.jpg',
