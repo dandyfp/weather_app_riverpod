@@ -8,7 +8,7 @@ class Wind with _$Wind {
   const factory Wind({
     required num speed,
     required int deg,
-    required num gust,
+    num? gust,
     String? photoUrl,
     @Default(0) int balance,
   }) = _Wind;

@@ -3,8 +3,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:weather_app/presentation/commons/method_dimens.dart';
 import 'package:weather_app/presentation/providers/router/router_provider.dart';
-import 'package:weather_app/presentation/providers/weather/weather_detail_provider.dart';
-import 'package:weather_app/presentation/widgets/textfield.dart';
 
 class PickPlacePage extends ConsumerWidget {
   const PickPlacePage({super.key});
@@ -13,7 +11,18 @@ class PickPlacePage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final TextEditingController cityNameController = TextEditingController();
 
-    var desc = ref.watch(WeatherDetailProvider(cityName: cityNameController.text));
+    /*  ref.listen(
+      weatherDataProvider,
+      (previous, next) {
+        if (next is AsyncData) {
+          if (next.value != null) {
+            ref.read(routerProvider).goNamed('weather-page', extra: '');
+          }
+        } else if (next is AsyncError) {
+          context.showSnackBar(next.error.toString());
+        }
+      },
+    ); */
     return Scaffold(
       body: Stack(
         children: [
@@ -41,7 +50,43 @@ class PickPlacePage extends ConsumerWidget {
                     ),
                   ),
                   verticalSpace(50),
-                  SizedBox(
+                  Container(
+                    width: MediaQuery.of(context).size.width - 48,
+                    height: 50,
+                    decoration: BoxDecoration(
+                      color: Colors.white.withOpacity(0.7),
+                      borderRadius: BorderRadius.circular(30),
+                    ),
+                    padding: const EdgeInsets.only(left: 30),
+                    child: Row(
+                      children: [
+                        Expanded(
+                          child: TextField(
+                            controller: cityNameController,
+                            decoration: const InputDecoration(
+                                isDense: true,
+                                contentPadding: EdgeInsets.all(0),
+                                border: InputBorder.none,
+                                hintText: 'Type city name',
+                                hintStyle: TextStyle(
+                                  color: Colors.grey,
+                                  fontWeight: FontWeight.bold,
+                                )),
+                          ),
+                        ),
+                        IconButton.filledTonal(
+                          onPressed: () {
+                            FocusManager.instance.primaryFocus?.unfocus();
+                            if (cityNameController.text.isNotEmpty) {
+                              ref.read(routerProvider).goNamed('weather-page', extra: cityNameController.text);
+                            }
+                          },
+                          icon: const Icon(Icons.check),
+                        )
+                      ],
+                    ),
+                  ),
+                  /* SizedBox(
                     width: MediaQuery.of(context).size.width - 48,
                     child: KTextField(
                       controller: cityNameController,
@@ -51,7 +96,7 @@ class PickPlacePage extends ConsumerWidget {
                       borderRadius: 20,
                       suffixIcon: GestureDetector(
                         onTap: () {
-                          ref.read(routerProvider).goNamed('weather-page', extra: cityNameController.text);
+                          
                         },
                         child: Container(
                           height: 15,
@@ -74,8 +119,8 @@ class PickPlacePage extends ConsumerWidget {
                         ),
                       ),
                     ),
-                  ),
-                  Text(desc.valueOrNull?.weather.first.description ?? '-')
+                  ), */
+                  // Text(desc.valueOrNull?.weather.first.description ?? '-')
                 ],
               ),
             ),

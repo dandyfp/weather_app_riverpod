@@ -22,7 +22,7 @@ Wind _$WindFromJson(Map<String, dynamic> json) {
 mixin _$Wind {
   num get speed => throw _privateConstructorUsedError;
   int get deg => throw _privateConstructorUsedError;
-  num get gust => throw _privateConstructorUsedError;
+  num? get gust => throw _privateConstructorUsedError;
   String? get photoUrl => throw _privateConstructorUsedError;
   int get balance => throw _privateConstructorUsedError;
 
@@ -36,7 +36,7 @@ abstract class $WindCopyWith<$Res> {
   factory $WindCopyWith(Wind value, $Res Function(Wind) then) =
       _$WindCopyWithImpl<$Res, Wind>;
   @useResult
-  $Res call({num speed, int deg, num gust, String? photoUrl, int balance});
+  $Res call({num speed, int deg, num? gust, String? photoUrl, int balance});
 }
 
 /// @nodoc
@@ -54,7 +54,7 @@ class _$WindCopyWithImpl<$Res, $Val extends Wind>
   $Res call({
     Object? speed = null,
     Object? deg = null,
-    Object? gust = null,
+    Object? gust = freezed,
     Object? photoUrl = freezed,
     Object? balance = null,
   }) {
@@ -67,10 +67,10 @@ class _$WindCopyWithImpl<$Res, $Val extends Wind>
           ? _value.deg
           : deg // ignore: cast_nullable_to_non_nullable
               as int,
-      gust: null == gust
+      gust: freezed == gust
           ? _value.gust
           : gust // ignore: cast_nullable_to_non_nullable
-              as num,
+              as num?,
       photoUrl: freezed == photoUrl
           ? _value.photoUrl
           : photoUrl // ignore: cast_nullable_to_non_nullable
@@ -90,7 +90,7 @@ abstract class _$$WindImplCopyWith<$Res> implements $WindCopyWith<$Res> {
       __$$WindImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({num speed, int deg, num gust, String? photoUrl, int balance});
+  $Res call({num speed, int deg, num? gust, String? photoUrl, int balance});
 }
 
 /// @nodoc
@@ -105,7 +105,7 @@ class __$$WindImplCopyWithImpl<$Res>
   $Res call({
     Object? speed = null,
     Object? deg = null,
-    Object? gust = null,
+    Object? gust = freezed,
     Object? photoUrl = freezed,
     Object? balance = null,
   }) {
@@ -118,10 +118,10 @@ class __$$WindImplCopyWithImpl<$Res>
           ? _value.deg
           : deg // ignore: cast_nullable_to_non_nullable
               as int,
-      gust: null == gust
+      gust: freezed == gust
           ? _value.gust
           : gust // ignore: cast_nullable_to_non_nullable
-              as num,
+              as num?,
       photoUrl: freezed == photoUrl
           ? _value.photoUrl
           : photoUrl // ignore: cast_nullable_to_non_nullable
@@ -140,7 +140,7 @@ class _$WindImpl implements _Wind {
   const _$WindImpl(
       {required this.speed,
       required this.deg,
-      required this.gust,
+      this.gust,
       this.photoUrl,
       this.balance = 0});
 
@@ -152,7 +152,7 @@ class _$WindImpl implements _Wind {
   @override
   final int deg;
   @override
-  final num gust;
+  final num? gust;
   @override
   final String? photoUrl;
   @override
@@ -200,7 +200,7 @@ abstract class _Wind implements Wind {
   const factory _Wind(
       {required final num speed,
       required final int deg,
-      required final num gust,
+      final num? gust,
       final String? photoUrl,
       final int balance}) = _$WindImpl;
 
@@ -211,7 +211,7 @@ abstract class _Wind implements Wind {
   @override
   int get deg;
   @override
-  num get gust;
+  num? get gust;
   @override
   String? get photoUrl;
   @override

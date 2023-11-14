@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:weather_app/helpers/injector.dart';
 import 'package:weather_app/presentation/providers/router/router_provider.dart';
 
-void main() {
+Future main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(const ProviderScope(child: MyApp()));
+  await setupInjector();
 }
 
 class MyApp extends ConsumerWidget {

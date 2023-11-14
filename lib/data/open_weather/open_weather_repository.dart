@@ -1,4 +1,3 @@
-import 'package:weather_app/api/base_url.dart';
 import 'package:weather_app/api/key.dart';
 import 'package:weather_app/data/repository/weather_repository.dart';
 import 'package:weather_app/domain/entities/data_weather.dart';
@@ -16,7 +15,7 @@ class OpenWeatherRepository implements WeatherRepository {
   Future<Result<DataWeather>> getCurrentWeather({required String cityName}) async {
     try {
       var response = await _dio!.get(
-        "${BaseUrl.baseUrl}weather?q=ID,$cityName&appid=$apiKey",
+        "https://api.openweathermap.org/data/2.5/weather?q=$cityName,ID&appid=$apiKey",
         options: _options,
       );
       return Result.success(DataWeather.fromJson(response.data));

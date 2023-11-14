@@ -9,7 +9,7 @@ part of 'wind.dart';
 _$WindImpl _$$WindImplFromJson(Map<String, dynamic> json) => _$WindImpl(
       speed: json['speed'] as num,
       deg: json['deg'] as int,
-      gust: json['gust'] as num,
+      gust: json['gust'] as num?,
       photoUrl: json['photoUrl'] as String?,
       balance: json['balance'] as int? ?? 0,
     );
