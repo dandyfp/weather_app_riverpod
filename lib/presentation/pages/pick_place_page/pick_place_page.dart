@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:weather_app/helpers/build_context_extension.dart';
+import 'package:weather_app/helpers/shared_preferences_helper.dart';
 import 'package:weather_app/presentation/commons/method_dimens.dart';
 import 'package:weather_app/presentation/providers/router/router_provider.dart';
+import 'package:weather_app/presentation/providers/weather_data/weather_data_provider.dart';
 
 class PickPlacePage extends ConsumerWidget {
   const PickPlacePage({super.key});
@@ -11,18 +14,13 @@ class PickPlacePage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final TextEditingController cityNameController = TextEditingController();
 
-    /*  ref.listen(
-      weatherDataProvider,
-      (previous, next) {
-        if (next is AsyncData) {
-          if (next.value != null) {
-            ref.read(routerProvider).goNamed('weather-page', extra: '');
-          }
-        } else if (next is AsyncError) {
-          context.showSnackBar(next.error.toString());
-        }
-      },
-    ); */
+    ref.listen(weatherDataProvider, (previous, next) {
+      if (SharedPreferencesHelper().getString('cityName') != null) {
+        ref.read(routerProvider).goNamed('weather-page', extra: SharedPreferencesHelper().getString('cityName'));
+      } else {
+        context.showSnackBar(next.asError.toString());
+      }
+    });
     return Scaffold(
       body: Stack(
         children: [
@@ -78,6 +76,7 @@ class PickPlacePage extends ConsumerWidget {
                           onPressed: () {
                             FocusManager.instance.primaryFocus?.unfocus();
                             if (cityNameController.text.isNotEmpty) {
+                              SharedPreferencesHelper().putString('cityName', cityNameController.text);
                               ref.read(routerProvider).goNamed('weather-page', extra: cityNameController.text);
                             }
                           },
