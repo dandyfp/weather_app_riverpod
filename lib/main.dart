@@ -21,7 +21,7 @@ class MyApp extends ConsumerWidget {
       theme: ThemeData(
         textTheme: GoogleFonts.poppinsTextTheme(),
         progressIndicatorTheme: const ProgressIndicatorThemeData(
-          color: Colors.white,
+          color: Colors.black,
         ),
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,

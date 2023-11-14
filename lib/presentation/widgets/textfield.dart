@@ -21,7 +21,7 @@ class KTextField extends StatelessWidget {
     this.controller,
     this.borderColor = Colors.transparent,
     this.borderRadius = 6.0,
-    this.backgroundColor = Colors.white,
+    required this.backgroundColor,
     this.padding,
     this.placeholderStyle,
     this.validator,
@@ -119,7 +119,7 @@ class KTextField extends StatelessWidget {
                       fontSize: 12,
                     ),
                 filled: true,
-                fillColor: enabled ? backgroundColor : Colors.grey,
+                fillColor: backgroundColor,
                 prefixIcon: Padding(
                   padding: const EdgeInsets.only(
                     left: 10.0,
@@ -148,7 +148,7 @@ class KTextField extends StatelessWidget {
                   ),
                 ),
                 focusedBorder: OutlineInputBorder(
-                  borderSide: const BorderSide(color: Colors.green),
+                  borderSide: const BorderSide(color: Colors.purpleAccent),
                   borderRadius: BorderRadius.all(
                     Radius.circular(borderRadius),
                   ),

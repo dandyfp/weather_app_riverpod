@@ -14,7 +14,7 @@ class DataWeather with _$DataWeather {
     required MainWeather main,
     required Wind wind,
     required String name,
-    required int timeZone,
+    num? timeZone,
   }) = _DataWeather;
 
   factory DataWeather.fromJson(Map<String, dynamic> json) => _$DataWeatherFromJson(json);

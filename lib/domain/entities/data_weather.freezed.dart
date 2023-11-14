@@ -25,7 +25,7 @@ mixin _$DataWeather {
   MainWeather get main => throw _privateConstructorUsedError;
   Wind get wind => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
-  int get timeZone => throw _privateConstructorUsedError;
+  num? get timeZone => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -45,7 +45,7 @@ abstract class $DataWeatherCopyWith<$Res> {
       MainWeather main,
       Wind wind,
       String name,
-      int timeZone});
+      num? timeZone});
 
   $MainWeatherCopyWith<$Res> get main;
   $WindCopyWith<$Res> get wind;
@@ -69,7 +69,7 @@ class _$DataWeatherCopyWithImpl<$Res, $Val extends DataWeather>
     Object? main = null,
     Object? wind = null,
     Object? name = null,
-    Object? timeZone = null,
+    Object? timeZone = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -92,10 +92,10 @@ class _$DataWeatherCopyWithImpl<$Res, $Val extends DataWeather>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      timeZone: null == timeZone
+      timeZone: freezed == timeZone
           ? _value.timeZone
           : timeZone // ignore: cast_nullable_to_non_nullable
-              as int,
+              as num?,
     ) as $Val);
   }
 
@@ -130,7 +130,7 @@ abstract class _$$DataWeatherImplCopyWith<$Res>
       MainWeather main,
       Wind wind,
       String name,
-      int timeZone});
+      num? timeZone});
 
   @override
   $MainWeatherCopyWith<$Res> get main;
@@ -154,7 +154,7 @@ class __$$DataWeatherImplCopyWithImpl<$Res>
     Object? main = null,
     Object? wind = null,
     Object? name = null,
-    Object? timeZone = null,
+    Object? timeZone = freezed,
   }) {
     return _then(_$DataWeatherImpl(
       id: null == id
@@ -177,10 +177,10 @@ class __$$DataWeatherImplCopyWithImpl<$Res>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      timeZone: null == timeZone
+      timeZone: freezed == timeZone
           ? _value.timeZone
           : timeZone // ignore: cast_nullable_to_non_nullable
-              as int,
+              as num?,
     ));
   }
 }
@@ -194,7 +194,7 @@ class _$DataWeatherImpl implements _DataWeather {
       required this.main,
       required this.wind,
       required this.name,
-      required this.timeZone})
+      this.timeZone})
       : _weather = weather;
 
   factory _$DataWeatherImpl.fromJson(Map<String, dynamic> json) =>
@@ -217,7 +217,7 @@ class _$DataWeatherImpl implements _DataWeather {
   @override
   final String name;
   @override
-  final int timeZone;
+  final num? timeZone;
 
   @override
   String toString() {
@@ -270,7 +270,7 @@ abstract class _DataWeather implements DataWeather {
       required final MainWeather main,
       required final Wind wind,
       required final String name,
-      required final int timeZone}) = _$DataWeatherImpl;
+      final num? timeZone}) = _$DataWeatherImpl;
 
   factory _DataWeather.fromJson(Map<String, dynamic> json) =
       _$DataWeatherImpl.fromJson;
@@ -286,7 +286,7 @@ abstract class _DataWeather implements DataWeather {
   @override
   String get name;
   @override
-  int get timeZone;
+  num? get timeZone;
   @override
   @JsonKey(ignore: true)
   _$$DataWeatherImplCopyWith<_$DataWeatherImpl> get copyWith =>
