@@ -16,7 +16,7 @@ class PickPlacePage extends ConsumerWidget {
       if (SharedPreferencesHelper().getString('cityName') != null) {
         ref.read(routerProvider).goNamed('weather-page', extra: SharedPreferencesHelper().getString('cityName'));
       } else {
-        context.showSnackBar(next.asError.toString());
+        if (next.asError != null) context.showSnackBar(next.asError.toString());
       }
     });
     return Scaffold(
