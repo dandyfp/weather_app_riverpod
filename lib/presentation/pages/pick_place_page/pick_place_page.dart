@@ -26,7 +26,7 @@ class PickPlacePage extends ConsumerWidget {
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height,
             child: Image.asset(
-              'assets/images/sky.jpg',
+              'assets/images/weather.jpg',
               fit: BoxFit.cover,
             ),
           ),
@@ -77,6 +77,8 @@ class PickPlacePage extends ConsumerWidget {
                             if (cityNameController.text.isNotEmpty) {
                               SharedPreferencesHelper().putString('cityName', cityNameController.text);
                               ref.read(routerProvider).goNamed('weather-page', extra: cityNameController.text);
+                            } else {
+                              context.showSnackBar('Please enter your location name');
                             }
                           },
                           icon: const Icon(Icons.check),
