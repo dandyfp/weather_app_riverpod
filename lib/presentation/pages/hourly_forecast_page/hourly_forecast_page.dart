@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:weather_app/presentation/pages/hourly_forecast_page/methods/background.dart';
+import 'package:weather_app/presentation/pages/hourly_forecast_page/methods/foreground.dart';
 import 'package:weather_app/presentation/providers/weather/hourly_forecast_provider.dart';
 
 class HourlyForeCastPage extends ConsumerWidget {
@@ -22,6 +23,7 @@ class HourlyForeCastPage extends ConsumerWidget {
         data: (data) => Stack(
           children: [
             backGroundHourlyForecast(context),
+            foreground(data!),
           ],
         ),
       ),

@@ -85,7 +85,7 @@ class WeatherPage extends ConsumerWidget {
                       ),
                     ),
                     Text(
-                      data.name,
+                      data.name ?? '-',
                       style: const TextStyle(
                         fontSize: 30,
                         color: Colors.white,

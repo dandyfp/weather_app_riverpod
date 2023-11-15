@@ -29,7 +29,7 @@ class OpenWeatherRepository implements WeatherRepository {
   Future<Result<DataHourlyForecast>> gethourlyForeCast({required String cityName}) async {
     try {
       var response = await _dio!.get(
-        "api.openweathermap.org/data/2.5/forecast?q=$cityName,ID&appid=$apiKey",
+        "https://api.openweathermap.org/data/2.5/forecast?q=$cityName,ID&appid=$apiKey",
         options: _options,
       );
       return Result.success(DataHourlyForecast.fromJson(response.data));

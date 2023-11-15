@@ -20,11 +20,12 @@ DataWeather _$DataWeatherFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$DataWeather {
-  int get id => throw _privateConstructorUsedError;
+  int? get id => throw _privateConstructorUsedError;
+  int? get dt => throw _privateConstructorUsedError;
   List<Weather> get weather => throw _privateConstructorUsedError;
   MainWeather get main => throw _privateConstructorUsedError;
   Wind get wind => throw _privateConstructorUsedError;
-  String get name => throw _privateConstructorUsedError;
+  String? get name => throw _privateConstructorUsedError;
   num? get timeZone => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -40,11 +41,12 @@ abstract class $DataWeatherCopyWith<$Res> {
       _$DataWeatherCopyWithImpl<$Res, DataWeather>;
   @useResult
   $Res call(
-      {int id,
+      {int? id,
+      int? dt,
       List<Weather> weather,
       MainWeather main,
       Wind wind,
-      String name,
+      String? name,
       num? timeZone});
 
   $MainWeatherCopyWith<$Res> get main;
@@ -64,18 +66,23 @@ class _$DataWeatherCopyWithImpl<$Res, $Val extends DataWeather>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
+    Object? id = freezed,
+    Object? dt = freezed,
     Object? weather = null,
     Object? main = null,
     Object? wind = null,
-    Object? name = null,
+    Object? name = freezed,
     Object? timeZone = freezed,
   }) {
     return _then(_value.copyWith(
-      id: null == id
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
+      dt: freezed == dt
+          ? _value.dt
+          : dt // ignore: cast_nullable_to_non_nullable
+              as int?,
       weather: null == weather
           ? _value.weather
           : weather // ignore: cast_nullable_to_non_nullable
@@ -88,10 +95,10 @@ class _$DataWeatherCopyWithImpl<$Res, $Val extends DataWeather>
           ? _value.wind
           : wind // ignore: cast_nullable_to_non_nullable
               as Wind,
-      name: null == name
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       timeZone: freezed == timeZone
           ? _value.timeZone
           : timeZone // ignore: cast_nullable_to_non_nullable
@@ -125,11 +132,12 @@ abstract class _$$DataWeatherImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {int id,
+      {int? id,
+      int? dt,
       List<Weather> weather,
       MainWeather main,
       Wind wind,
-      String name,
+      String? name,
       num? timeZone});
 
   @override
@@ -149,18 +157,23 @@ class __$$DataWeatherImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
+    Object? id = freezed,
+    Object? dt = freezed,
     Object? weather = null,
     Object? main = null,
     Object? wind = null,
-    Object? name = null,
+    Object? name = freezed,
     Object? timeZone = freezed,
   }) {
     return _then(_$DataWeatherImpl(
-      id: null == id
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
+      dt: freezed == dt
+          ? _value.dt
+          : dt // ignore: cast_nullable_to_non_nullable
+              as int?,
       weather: null == weather
           ? _value._weather
           : weather // ignore: cast_nullable_to_non_nullable
@@ -173,10 +186,10 @@ class __$$DataWeatherImplCopyWithImpl<$Res>
           ? _value.wind
           : wind // ignore: cast_nullable_to_non_nullable
               as Wind,
-      name: null == name
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       timeZone: freezed == timeZone
           ? _value.timeZone
           : timeZone // ignore: cast_nullable_to_non_nullable
@@ -189,11 +202,12 @@ class __$$DataWeatherImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$DataWeatherImpl implements _DataWeather {
   const _$DataWeatherImpl(
-      {required this.id,
+      {this.id,
+      this.dt,
       required final List<Weather> weather,
       required this.main,
       required this.wind,
-      required this.name,
+      this.name,
       this.timeZone})
       : _weather = weather;
 
@@ -201,7 +215,9 @@ class _$DataWeatherImpl implements _DataWeather {
       _$$DataWeatherImplFromJson(json);
 
   @override
-  final int id;
+  final int? id;
+  @override
+  final int? dt;
   final List<Weather> _weather;
   @override
   List<Weather> get weather {
@@ -215,13 +231,13 @@ class _$DataWeatherImpl implements _DataWeather {
   @override
   final Wind wind;
   @override
-  final String name;
+  final String? name;
   @override
   final num? timeZone;
 
   @override
   String toString() {
-    return 'DataWeather(id: $id, weather: $weather, main: $main, wind: $wind, name: $name, timeZone: $timeZone)';
+    return 'DataWeather(id: $id, dt: $dt, weather: $weather, main: $main, wind: $wind, name: $name, timeZone: $timeZone)';
   }
 
   @override
@@ -230,6 +246,7 @@ class _$DataWeatherImpl implements _DataWeather {
         (other.runtimeType == runtimeType &&
             other is _$DataWeatherImpl &&
             (identical(other.id, id) || other.id == id) &&
+            (identical(other.dt, dt) || other.dt == dt) &&
             const DeepCollectionEquality().equals(other._weather, _weather) &&
             (identical(other.main, main) || other.main == main) &&
             (identical(other.wind, wind) || other.wind == wind) &&
@@ -243,6 +260,7 @@ class _$DataWeatherImpl implements _DataWeather {
   int get hashCode => Object.hash(
       runtimeType,
       id,
+      dt,
       const DeepCollectionEquality().hash(_weather),
       main,
       wind,
@@ -265,18 +283,21 @@ class _$DataWeatherImpl implements _DataWeather {
 
 abstract class _DataWeather implements DataWeather {
   const factory _DataWeather(
-      {required final int id,
+      {final int? id,
+      final int? dt,
       required final List<Weather> weather,
       required final MainWeather main,
       required final Wind wind,
-      required final String name,
+      final String? name,
       final num? timeZone}) = _$DataWeatherImpl;
 
   factory _DataWeather.fromJson(Map<String, dynamic> json) =
       _$DataWeatherImpl.fromJson;
 
   @override
-  int get id;
+  int? get id;
+  @override
+  int? get dt;
   @override
   List<Weather> get weather;
   @override
@@ -284,7 +305,7 @@ abstract class _DataWeather implements DataWeather {
   @override
   Wind get wind;
   @override
-  String get name;
+  String? get name;
   @override
   num? get timeZone;
   @override

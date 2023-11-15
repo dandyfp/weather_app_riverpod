@@ -9,11 +9,12 @@ part 'data_weather.g.dart';
 @freezed
 class DataWeather with _$DataWeather {
   const factory DataWeather({
-    required int id,
+    int? id,
+    int? dt,
     required List<Weather> weather,
     required MainWeather main,
     required Wind wind,
-    required String name,
+    String? name,
     num? timeZone,
   }) = _DataWeather;
 

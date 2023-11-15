@@ -12,7 +12,7 @@ Raw<GoRouter> router(RouterRef ref) => GoRouter(
         GoRoute(
           path: '/pick-place-page',
           name: 'pick-place-page',
-          builder: (context, state) => const PickPlacePage(),
+          builder: (context, state) => PickPlacePage(),
         ),
         GoRoute(
           path: '/weather-page',

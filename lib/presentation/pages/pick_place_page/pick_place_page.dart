@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:weather_app/helpers/build_context_extension.dart';
 import 'package:weather_app/helpers/shared_preferences_helper.dart';
 import 'package:weather_app/presentation/commons/method_dimens.dart';
@@ -8,12 +7,11 @@ import 'package:weather_app/presentation/providers/router/router_provider.dart';
 import 'package:weather_app/presentation/providers/weather_data/weather_data_provider.dart';
 
 class PickPlacePage extends ConsumerWidget {
-  const PickPlacePage({super.key});
+  PickPlacePage({super.key});
 
+  final TextEditingController cityNameController = TextEditingController();
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final TextEditingController cityNameController = TextEditingController();
-
     ref.listen(weatherDataProvider, (previous, next) {
       if (SharedPreferencesHelper().getString('cityName') != null) {
         ref.read(routerProvider).goNamed('weather-page', extra: SharedPreferencesHelper().getString('cityName'));
@@ -39,14 +37,11 @@ class PickPlacePage extends ConsumerWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    'Set Up\nyour location',
-                    style: GoogleFonts.poppins(
-                      color: Colors.purple,
-                      fontSize: 24,
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
+                  Text('Set Up\nyour location',
+                      style: Theme.of(context).textTheme.displaySmall!.copyWith(
+                            fontWeight: FontWeight.w900,
+                            color: Theme.of(context).primaryColor,
+                          )),
                   verticalSpace(50),
                   Container(
                     width: MediaQuery.of(context).size.width - 48,
@@ -60,16 +55,20 @@ class PickPlacePage extends ConsumerWidget {
                       children: [
                         Expanded(
                           child: TextField(
+                            textCapitalization: TextCapitalization.words,
+                            keyboardType: TextInputType.name,
+                            maxLines: 1,
                             controller: cityNameController,
                             decoration: const InputDecoration(
-                                isDense: true,
-                                contentPadding: EdgeInsets.all(0),
-                                border: InputBorder.none,
-                                hintText: 'Type city name',
-                                hintStyle: TextStyle(
-                                  color: Colors.grey,
-                                  fontWeight: FontWeight.bold,
-                                )),
+                              isDense: true,
+                              contentPadding: EdgeInsets.all(0),
+                              border: InputBorder.none,
+                              hintText: 'Type city name',
+                              hintStyle: TextStyle(
+                                color: Colors.grey,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
                           ),
                         ),
                         IconButton.filledTonal(
@@ -85,41 +84,6 @@ class PickPlacePage extends ConsumerWidget {
                       ],
                     ),
                   ),
-                  /* SizedBox(
-                    width: MediaQuery.of(context).size.width - 48,
-                    child: KTextField(
-                      controller: cityNameController,
-                      maxLines: 1,
-                      isDense: true,
-                      backgroundColor: Colors.white,
-                      borderRadius: 20,
-                      suffixIcon: GestureDetector(
-                        onTap: () {
-                          
-                        },
-                        child: Container(
-                          height: 15,
-                          width: 80,
-                          decoration: BoxDecoration(
-                            color: Colors.purple.withOpacity(0.3),
-                            borderRadius: const BorderRadius.only(
-                              topRight: Radius.circular(20),
-                              bottomRight: Radius.circular(20),
-                              bottomLeft: Radius.circular(20),
-                            ),
-                          ),
-                          child: const Center(
-                            child: Icon(
-                              Icons.send,
-                              size: 20,
-                              color: Colors.purple,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ), */
-                  // Text(desc.valueOrNull?.weather.first.description ?? '-')
                 ],
               ),
             ),
