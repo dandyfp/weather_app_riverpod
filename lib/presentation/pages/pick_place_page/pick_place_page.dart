@@ -77,7 +77,7 @@ class PickPlacePage extends ConsumerWidget {
                             if (cityNameController.text.isNotEmpty) {
                               SharedPreferencesHelper().putString('cityName', cityNameController.text);
                               ref.read(routerProvider).goNamed('weather-page', extra: cityNameController.text);
-                            } else {
+                            } else if (cityNameController.text.isEmpty) {
                               context.showSnackBar('Please enter your location name');
                             }
                           },
